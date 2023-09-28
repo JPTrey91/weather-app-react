@@ -16,7 +16,7 @@ function App() {
     setIsLoading(true);
     try {
       const weatherResponse = await fetch(
-        `${WEATHER_API_URL}${location}&days=${days}&aqi=no&alerts=no)`,
+        `${WEATHER_API_URL}${location}&days=3&aqi=no&alerts=no)`,
         { mode: "cors" }
       );
       const newWeatherData = await weatherResponse.json();
@@ -73,13 +73,14 @@ function App() {
           {errors.length > 0 ? (
             <p className="error">{errors[errors.length - 1]}</p>
           ) : null}
-          
+
           {Object.keys(weatherData).length > 1 ? (
             <>
               <CurrentWeatherBlock dataset={weatherData} />
 
               {weatherData.forecast.forecastday.map((dayInfo, index) => {
-                return <WeatherBlock dayData={dayInfo} isToday={index === 0} />;
+                if (index < days)
+                  return <WeatherBlock dayData={dayInfo} isToday={index === 0} />;
               })}
             </>
           ) : null}
