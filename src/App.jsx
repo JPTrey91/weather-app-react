@@ -62,7 +62,7 @@ function App() {
           <button
             id="get-weather"
             className={location.length === 5 ? "active" : "inactive"}
-            onClick={() => fetchWeatherData(location)}
+            onClick={() => fetchWeatherData()}
           >
             Get Weather
           </button>
