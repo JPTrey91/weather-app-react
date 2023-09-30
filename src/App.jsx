@@ -2,8 +2,9 @@ import { useState } from "react";
 import "./App.css";
 import CurrentWeatherBlock from "./CurrentWeatherBlock";
 import WeatherBlock from "./WeatherBlock";
+const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 const WEATHER_API_URL =
-  "https://api.weatherapi.com/v1/forecast.json?key=2e21eea24f714bb4a65154936231909&q=";
+  `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=`;
 
 function App() {
   const [location, setLocation] = useState("");
